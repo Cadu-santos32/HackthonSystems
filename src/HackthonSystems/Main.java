@@ -45,13 +45,13 @@ public class Main {
         equipe1.setProjeto(softwareDeGestao);
         equipe2.setProjeto(softwareDeCrm);
 
-        // ==== Criar Bancas com 4 jurados cada ====
+        // TODO Criar Bancas com 4 jurados cada
         Map<Jurado, Integer> notas1 = new HashMap<>();
         Map<Jurado, Integer> notas2 = new HashMap<>();
 
         for (int i = 1; i <= 4; i++) {
-            notas1.put(new Jurado("JuradoA" + i, "1111111111" + i, puc, "TI", 5), 6 + i);
-            notas2.put(new Jurado("JuradoB" + i, "2222222222" + i, una, "Negócios", 4), 5 + i);
+            notas1.put(new Jurado("JuradoA" + i, "1111111111" + i, puc, "TI", 5), 2 + i); 
+            notas2.put(new Jurado("JuradoB" + i, "2222222222" + i, una, "Negócios", 4), 3 + i);
         }
 
         Banca banca1 = new Banca(softwareDeGestao, notas1);
@@ -60,18 +60,18 @@ public class Main {
         LocalDateTime dataHora1 = LocalDateTime.parse("2025-06-14T13:45:00");
         LocalDateTime dataHora2 = LocalDateTime.parse("2025-06-14T13:45:00");
 
-        // ==== Criar Apresentações ====
+        // TODO Criar Apresentações
         Apresentacao apresentacao1 = new Apresentacao(softwareDeGestao, banca1, sala1, dataHora1);
         Apresentacao apresentacao2 = new Apresentacao(softwareDeCrm, banca2, sala2, dataHora2);
 
         apresentacoesRepo.adicionarApresentacao(apresentacao1);
         apresentacoesRepo.adicionarApresentacao(apresentacao2);
 
-        // ==== Calcular nota final ====
+        // TODO Calcular nota final
         apresentacao1.avaliar();
         apresentacao2.avaliar();
 
-        // ==== Listar projetos com nota final ≥ 7 ====
+        // TODO Listar projetos com nota final ≥ 7
         System.out.println("=== Projetos Aprovados (nota >= 7) ===");
         List<Projeto> aprovados = Arrays.asList(softwareDeGestao, softwareDeCrm).stream()
                 .filter(p -> p.getNotaFinal() >= 7)
